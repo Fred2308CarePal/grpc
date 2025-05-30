@@ -78,7 +78,6 @@ Pod::Spec.new do |s|
     'USER_HEADER_SEARCH_PATHS' => '"$(PODS_TARGET_SRCROOT)"'\
         ' "$(PODS_TARGET_SRCROOT)/src/core/ext/upb-gen"'\
         ' "$(PODS_TARGET_SRCROOT)/src/core/ext/upbdefs-gen"'\
-        ' "$(PODS_TARGET_SRCROOT)/third_party/re2"'\
         ' "$(PODS_TARGET_SRCROOT)/third_party/upb"'\
         ' "$(PODS_TARGET_SRCROOT)/third_party/utf8_range"'\
         ' "$(PODS_TARGET_SRCROOT)/third_party/xxhash"',
@@ -238,7 +237,6 @@ Pod::Spec.new do |s|
     ss.dependency 'abseil/types/optional', abseil_version
     ss.dependency 'abseil/types/span', abseil_version
     ss.dependency 'abseil/utility/utility', abseil_version
-    ss.dependency 're2', '~> 202301'  # ← added dependency for 
     ss.compiler_flags = '-DBORINGSSL_PREFIX=GRPC -Wno-unreachable-code -Wno-shorten-64-to-32'
 
     ss.source_files = 'src/core/call/call_arena_allocator.cc',
@@ -2218,49 +2216,6 @@ Pod::Spec.new do |s|
                       'third_party/address_sorting/address_sorting_posix.c',
                       'third_party/address_sorting/address_sorting_windows.c',
                       'third_party/address_sorting/include/address_sorting/address_sorting.h',
-                      'third_party/re2/re2/bitmap256.h',
-                      'third_party/re2/re2/bitstate.cc',
-                      'third_party/re2/re2/compile.cc',
-                      'third_party/re2/re2/dfa.cc',
-                      'third_party/re2/re2/filtered_re2.cc',
-                      'third_party/re2/re2/filtered_re2.h',
-                      'third_party/re2/re2/mimics_pcre.cc',
-                      'third_party/re2/re2/nfa.cc',
-                      'third_party/re2/re2/onepass.cc',
-                      'third_party/re2/re2/parse.cc',
-                      'third_party/re2/re2/perl_groups.cc',
-                      'third_party/re2/re2/pod_array.h',
-                      'third_party/re2/re2/prefilter.cc',
-                      'third_party/re2/re2/prefilter.h',
-                      'third_party/re2/re2/prefilter_tree.cc',
-                      'third_party/re2/re2/prefilter_tree.h',
-                      'third_party/re2/re2/prog.cc',
-                      'third_party/re2/re2/prog.h',
-                      'third_party/re2/re2/re2.cc',
-                      'third_party/re2/re2/re2.h',
-                      'third_party/re2/re2/regexp.cc',
-                      'third_party/re2/re2/regexp.h',
-                      'third_party/re2/re2/set.cc',
-                      'third_party/re2/re2/set.h',
-                      'third_party/re2/re2/simplify.cc',
-                      'third_party/re2/re2/sparse_array.h',
-                      'third_party/re2/re2/sparse_set.h',
-                      'third_party/re2/re2/stringpiece.cc',
-                      'third_party/re2/re2/stringpiece.h',
-                      'third_party/re2/re2/tostring.cc',
-                      'third_party/re2/re2/unicode_casefold.cc',
-                      'third_party/re2/re2/unicode_casefold.h',
-                      'third_party/re2/re2/unicode_groups.cc',
-                      'third_party/re2/re2/unicode_groups.h',
-                      'third_party/re2/re2/walker-inl.h',
-                      'third_party/re2/util/logging.h',
-                      'third_party/re2/util/mix.h',
-                      'third_party/re2/util/mutex.h',
-                      'third_party/re2/util/rune.cc',
-                      'third_party/re2/util/strutil.cc',
-                      'third_party/re2/util/strutil.h',
-                      'third_party/re2/util/utf.h',
-                      'third_party/re2/util/util.h',
                       'third_party/upb/upb/base/descriptor_constants.h',
                       'third_party/upb/upb/base/internal/endian.h',
                       'third_party/upb/upb/base/internal/log2.h',
@@ -3560,27 +3515,6 @@ Pod::Spec.new do |s|
                               'src/core/xds/xds_client/xds_transport.h',
                               'third_party/address_sorting/address_sorting_internal.h',
                               'third_party/address_sorting/include/address_sorting/address_sorting.h',
-                              'third_party/re2/re2/bitmap256.h',
-                              'third_party/re2/re2/filtered_re2.h',
-                              'third_party/re2/re2/pod_array.h',
-                              'third_party/re2/re2/prefilter.h',
-                              'third_party/re2/re2/prefilter_tree.h',
-                              'third_party/re2/re2/prog.h',
-                              'third_party/re2/re2/re2.h',
-                              'third_party/re2/re2/regexp.h',
-                              'third_party/re2/re2/set.h',
-                              'third_party/re2/re2/sparse_array.h',
-                              'third_party/re2/re2/sparse_set.h',
-                              'third_party/re2/re2/stringpiece.h',
-                              'third_party/re2/re2/unicode_casefold.h',
-                              'third_party/re2/re2/unicode_groups.h',
-                              'third_party/re2/re2/walker-inl.h',
-                              'third_party/re2/util/logging.h',
-                              'third_party/re2/util/mix.h',
-                              'third_party/re2/util/mutex.h',
-                              'third_party/re2/util/strutil.h',
-                              'third_party/re2/util/utf.h',
-                              'third_party/re2/util/util.h',
                               'third_party/upb/upb/base/descriptor_constants.h',
                               'third_party/upb/upb/base/internal/endian.h',
                               'third_party/upb/upb/base/internal/log2.h',
@@ -3717,6 +3651,5 @@ Pod::Spec.new do |s|
   s.subspec 'CFStream-Implementation' do |ss|
     ss.dependency "#{s.name}/Implementation", version
   end
-  
-  s.dependency 're2', '~> 20220601'
+
 end
