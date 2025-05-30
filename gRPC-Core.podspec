@@ -239,6 +239,7 @@ Pod::Spec.new do |s|
     ss.dependency 'abseil/types/optional', abseil_version
     ss.dependency 'abseil/types/span', abseil_version
     ss.dependency 'abseil/utility/utility', abseil_version
+    ss.dependency 're2', '~> 202301'  # ← added dependency for 
     ss.compiler_flags = '-DBORINGSSL_PREFIX=GRPC -Wno-unreachable-code -Wno-shorten-64-to-32'
 
     ss.source_files = 'src/core/call/call_arena_allocator.cc',
