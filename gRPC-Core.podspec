@@ -3720,5 +3720,6 @@ Pod::Spec.new do |s|
   s.subspec 'CFStream-Implementation' do |ss|
     ss.dependency "#{s.name}/Implementation", version
   end
-
+  
+  s.dependency 're2', '~> 20220601'
 end
