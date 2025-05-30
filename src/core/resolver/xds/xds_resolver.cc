@@ -45,7 +45,6 @@
 #include "absl/strings/str_replace.h"
 #include "absl/strings/string_view.h"
 #include "absl/strings/strip.h"
-#include "re2/re2.h"
 #include "src/core/call/metadata_batch.h"
 #include "src/core/call/status_util.h"
 #include "src/core/client_channel/client_channel_internal.h"
@@ -651,9 +650,7 @@ std::optional<uint64_t> HeaderHashHelper(
     if (header_value->data() != value_buffer.data()) {
       value_buffer = std::string(*header_value);
     }
-    RE2::GlobalReplace(&value_buffer, *header_policy.regex,
-                       header_policy.regex_substitution);
-    header_value = value_buffer;
+
   }
   return XXH64(header_value->data(), header_value->size(), 0);
 }
