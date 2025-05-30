@@ -22,7 +22,7 @@
 Pod::Spec.new do |s|
   s.name     = 'gRPC-Core'
   version = '1.74.0-dev'
-  s.version  = version
+  s.version  = '1.69.0'
   s.summary  = 'Core cross-platform gRPC library, written in C'
   s.homepage = 'https://grpc.io'
   s.license  = 'Apache License, Version 2.0'
